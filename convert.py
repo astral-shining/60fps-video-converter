@@ -52,7 +52,7 @@ for file in files:
     f.write("file '{}'\n".format(file))
 f.close()
 
-subprocess.run("ffmpeg -y -f concat -safe 0 -i join.txt output.wav -map 0:v -map 1:a -c copy " + args.output, shell=True)
+subprocess.run("ffmpeg -y -f concat -safe 0 -i join.txt -i output.wav -map 0:v -map 1:a -c copy -shortest " + args.output, shell=True)
 
 files.append("output.wav")
 
